@@ -34,10 +34,10 @@ public class HealthSystem : MonoBehaviour {
                 other.ClosestPointOnBounds(transform.position);
             Vector3 direction = 
                 triggerPosition - transform.position;
-            GameObject fx = PoolingManager.instance.UseObject
+            GameObject fx = PoolingManager.Instance.UseObject
                 (hitEffect, triggerPosition, Quaternion.LookRotation(direction));
-            PoolingManager.instance.ReturnObject(fx, 1f);
-
+            PoolingManager.Instance.ReturnObject(fx, 1f);
+            print("enter OnTriggerEnter");
             // do damage here
             float damage = float.Parse(other.name);
             TakeDamage(damage);

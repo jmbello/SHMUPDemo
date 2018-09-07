@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class PoolingManager : MonoBehaviour {
 
-    public static PoolingManager instance;
+    private static PoolingManager instance;
+
+    public static PoolingManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
 
     private void Awake()
     {
@@ -17,7 +25,9 @@ public class PoolingManager : MonoBehaviour {
 
     public GameObject UseObject(GameObject obj, Vector3 pos, Quaternion rot)
     {
-        return Instantiate(obj, pos, rot);
+        GameObject temp = Instantiate(obj, pos, rot);
+        temp.SetActive(true);
+        return temp;
     }
 
     public void ReturnObject(GameObject obj, float delay = 0f)

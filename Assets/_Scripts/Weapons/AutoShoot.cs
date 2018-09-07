@@ -55,11 +55,11 @@ public class AutoShoot : MonoBehaviour
 
     void Shoot(float angle)
     {
-        GameObject temp = PoolingManager.instance.UseObject(bulletPrefabs, firePoint.position, Quaternion.identity);
+        GameObject temp = PoolingManager.Instance.UseObject(bulletPrefabs, firePoint.position, Quaternion.identity);
         temp.name = shootProfile.damage.ToString();
         temp.transform.Rotate(Vector3.up, 0f);
         temp.SetActive(true);
-        ///temp.GetComponent<BulletMove>().speed = shootProfile.speed;
-        //PoolingManager.instance.ReturnObject(temp, shootProfile.destroyRate);
+        temp.GetComponent<BulletMove>().speed = shootProfile.speed;
+        PoolingManager.Instance.ReturnObject(temp, shootProfile.destroyRate);
     }
 }
